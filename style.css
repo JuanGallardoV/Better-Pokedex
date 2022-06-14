@@ -40,9 +40,15 @@ nav a:hover {
     right: 60px;
 }
 
-.pokeball {
-    width: 20px;
+#pokeball {
+    width: 45px;
     height: auto;
+}
+
+#masterball {
+    width: 75px;
+    height: auto;
+    margin-right: -20px !important;
 }
 
 input:focus:invalid {
@@ -82,7 +88,8 @@ input:focus:invalid {
 }
 
 .card__link,
-.card__icon {
+.card__icon,
+.card__ball {
     position: relative;
     text-decoration: none;
     color: rgba(255, 255, 255, 0.9);
@@ -104,6 +111,11 @@ input:focus:invalid {
     width: 100%;
     color: black;
 }
+
+.card__ball {
+    grid-row: 1/2;
+    justify-self: end;
+  }
 
 .card__icon {
     grid-row: 2/3;

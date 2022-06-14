@@ -3,7 +3,7 @@ const pokemons = []
 document.querySelector("#addBtn").addEventListener("click", () => {
     let name = document.querySelector("#name").value
     let desc = document.querySelector("#desc").value
-    let legend =  document.querySelector("#legend").checked
+    let legend = document.querySelector("#legend").checked
     let type = document.querySelector("#type").value
     let pokemon = {}
     //Cambiar: Agregar validaciones
@@ -20,15 +20,28 @@ document.querySelector("#addBtn").addEventListener("click", () => {
 })
 const loadData = () => {
     let container = document.querySelector('#cards-container')
-    container.innerHTML= ''
-    for(let i=0; i<pokemons.length; ++i) {
+    container.innerHTML = ''
+    for (let i = 0; i < pokemons.length; ++i) {
         let p = pokemons[i]
         //Cambiar: Agregar lo de legendario
         //Card
         let card = document.createElement('div')
         card.classList.add('card')
         card.setAttribute('id', `${p.type}`)
-        card.innerHTML = `
+        if (p.legend) {
+            card.innerHTML = `
+                <div class="card__icon">
+                    <i class="fas fa-${p.type}"></i>
+                    ${p.name}
+                </div>
+                <p class="card__ball"><img src="assets/masterball.png" class="rounded me-2" id="masterball" alt="..."></p>
+                <h2 class="card__title">${p.desc}</h2>
+                <p class="card__apply">
+                    <a class="card__link" onClick="deletePokemon(${i})">Eliminar <i class="fas fa-arrow-right"></i></a>
+                </p>
+        `
+        } else {
+            card.innerHTML = `
                 <div class="card__icon">
                     <i class="fas fa-${p.type}"></i>
                     ${p.name}
@@ -38,26 +51,27 @@ const loadData = () => {
                     <a class="card__link" onClick="deletePokemon(${i})">Eliminar <i class="fas fa-arrow-right"></i></a>
                 </p>
         `
+        }
         container.appendChild(card)
         //Cambiar: Limpiar el modal
         resetModal()
     }
 }
 
-const deletePokemon = async function(id){
+const deletePokemon = async function (id) {
     console.log(pokemons, pokemons[id])
     let res = await Swal.fire({
-        title:`¿Desea enviar al Profesor Oak el Pokémon ${pokemons[id].name}?`,
-        showCancelButton:true,
-        confirmButtonText:"Si, enviar!"
-      });
-      if(res.isConfirmed){
-        pokemons.splice(id,1);
+        title: `¿Desea enviar al Profesor Oak el Pokémon ${pokemons[id].name}?`,
+        showCancelButton: true,
+        confirmButtonText: "Si, enviar!"
+    });
+    if (res.isConfirmed) {
+        pokemons.splice(id, 1);
         loadData();
         Swal.fire("Pokémon enviado al Profesor Oak!");
-      }else {
+    } else {
         Swal.fire("Operación Cancelada");
-      }
+    }
 }
 
 const resetModal = () => {
