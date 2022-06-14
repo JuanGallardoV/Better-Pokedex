@@ -1,0 +1,68 @@
+const pokemons = []
+
+document.querySelector("#addBtn").addEventListener("click", () => {
+    let name = document.querySelector("#name").value
+    let desc = document.querySelector("#desc").value
+    let legend =  document.querySelector("#legend").checked
+    let type = document.querySelector("#type").value
+    let pokemon = {}
+    //Cambiar: Agregar validaciones o mencionar que no están 
+    pokemon.name = name
+    pokemon.desc = desc
+    pokemon.legend = legend
+    pokemon.type = type
+    pokemons.push(pokemon)
+    console.log(pokemon)
+    loadData()
+    //Cambiar: Agregar alerta o toast al añadir
+    //Cerrar Modal
+    $('#addModal').modal('hide')
+})
+const loadData = () => {
+    let container = document.querySelector('#cards-container')
+    container.innerHTML= ''
+    for(let i=0; i<pokemons.length; ++i) {
+        let p = pokemons[i]
+        //Cambiar: Agregar lo de legendario
+        //Card
+        let card = document.createElement('div')
+        card.classList.add('card')
+        card.setAttribute('id', `${p.type}`)
+        card.innerHTML = `
+                <div class="card__icon">
+                    <i class="fas fa-${p.type}"></i>
+                    ${p.name}
+                </div>
+                <h2 class="card__title">${p.desc}</h2>
+                <p class="card__apply">
+                    <a class="card__link" onClick="deletePokemon(${i})">Eliminar <i class="fas fa-arrow-right"></i></a>
+                </p>
+        `
+        container.appendChild(card)
+        //Cambiar: Limpiar el modal
+        resetModal()
+    }
+}
+
+const deletePokemon = async function(id){
+    console.log(pokemons, pokemons[id])
+    let res = await Swal.fire({
+        title:`Desea enviar al Profesor Oak el pokemon ${pokemons[id].name}?`,
+        showCancelButton:true,
+        confirmButtonText:"Si, enviar!"
+      });
+      if(res.isConfirmed){
+        pokemons.splice(id,1);
+        loadData();
+        Swal.fire("Pokemon enviado al Profesor Oak!");
+      }else {
+        Swal.fire("Operacion Cancelada");
+      }
+}
+
+const resetModal = () => {
+    document.querySelector('#name').value = ''
+    document.querySelector('#desc').value = ''
+    document.querySelector('#noLegend').checked = true
+    document.querySelector('#type').value = 'leaf'
+}
