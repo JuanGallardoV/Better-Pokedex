@@ -4,6 +4,11 @@ body {
     margin: 0;
 }
 
+img {
+    pointer-events: none;
+    user-select: none;
+}
+
 nav {
     background-color: #3a24f0;
     padding: 10px;
@@ -51,10 +56,10 @@ nav a:hover {
     margin-right: -20px !important;
 }
 
-input:focus:invalid {
+/* input:focus:invalid {
     background: rgba(241, 39, 17, 0.6);
     border-color: red;
-}
+} */
 
 .container-fluid {
     background: rebeccapurple;

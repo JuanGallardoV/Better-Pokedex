@@ -48,14 +48,14 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                        <div id="alert"></div>
                         <div class="mb-3">
                             <label class="form-label" for="name">Nombre</label>
-                            <input class="form-control" id="name" type="text" placeholder="Máximo 11 caracteres" required minlength="1" maxlength="11">
+                            <input class="form-control" id="name" type="text" placeholder="Máximo 11 caracteres" required maxlength="11">
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="desc">Descripción</label>
-                            <input class="form-control" id="desc" type="text" placeholder="Máximo 25 caracteres" required minlength="1" maxlength="25">
+                            <input class="form-control" id="desc" type="text" placeholder="Máximo 25 caracteres" required maxlength="25">
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="legend-rb">Legendario</label>
@@ -78,10 +78,10 @@
                                 <option value="bolt">Eléctrico</option>
                             </select>
                         </div>
-                    </form>
+                    
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" id="cancelBtn" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
                     <button type="submit" id="addBtn" class="btn btn-success">Añadir</button>
                 </div>
             </div>
