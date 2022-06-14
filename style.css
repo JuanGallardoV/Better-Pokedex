@@ -25,17 +25,34 @@ nav a:hover {
     color: aqua;
 }
 
-.btn-container {
-    margin: 20px 10px 0 0;
+#modalBtn {
+    border-radius: 50%;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
 }
 
-#modalBtn {
-    border-radius: 50px;
+#toast {
+    position: absolute;
+    top: 70px;
+    right: 60px;
+}
+
+.pokeball {
+    width: 20px;
+    height: auto;
+}
+
+input:focus:invalid {
+    background: rgba(241, 39, 17, 0.6);
+    border-color: red;
 }
 
 .container-fluid {
     background: rebeccapurple;
-    margin-top: 35px;
+    /* margin-top: 35px; */
     padding: 20px;
     /* overflow: hidden;
     max-height: 500px; */
@@ -44,7 +61,7 @@ nav a:hover {
 .cards {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .card {
@@ -111,21 +128,25 @@ a {
 /* Fondos por tipo del Pokemon*/
 /* Planta */
 #leaf {
-    background: linear-gradient(135deg, rgba(82,194,52,1) 0%, rgba(6,23,0,1) 80%);
+    background: linear-gradient(135deg, rgba(82, 194, 52, 1) 0%, rgba(6, 23, 0, 1) 80%);
 }
+
 /* Fuego */
 #fire-flame-curved {
-    background: linear-gradient(135deg, rgba(241,39,17,1) 0%, rgba(245,175,25,1) 80%);
+    background: linear-gradient(135deg, rgba(241, 39, 17, 1) 0%, rgba(245, 175, 25, 1) 80%);
 }
+
 /* Agua */
 #droplet {
-    background: linear-gradient(135deg, rgba(0,180,219,1) 0%, rgba(0,131,176,1) 80%);
+    background: linear-gradient(135deg, rgba(0, 180, 219, 1) 0%, rgba(0, 131, 176, 1) 80%);
 }
+
 /* Normal */
 #bullseye {
-    background: linear-gradient(135deg, rgba(142,158,171,1) 0%, rgba(238,242,243,1) 80%);
+    background: linear-gradient(135deg, rgba(142, 158, 171, 1) 0%, rgba(238, 242, 243, 1) 80%);
 }
+
 /* Electrico */
 #bolt {
-    background: linear-gradient(135deg, rgba(202,197,49,1) 0%, rgba(243,249,167,1) 80%);
+    background: linear-gradient(135deg, rgba(202, 197, 49, 1) 0%, rgba(243, 249, 167, 1) 80%);
 }

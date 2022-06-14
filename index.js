@@ -6,17 +6,17 @@ document.querySelector("#addBtn").addEventListener("click", () => {
     let legend =  document.querySelector("#legend").checked
     let type = document.querySelector("#type").value
     let pokemon = {}
-    //Cambiar: Agregar validaciones o mencionar que no están 
+    //Cambiar: Agregar validaciones
     pokemon.name = name
     pokemon.desc = desc
     pokemon.legend = legend
     pokemon.type = type
     pokemons.push(pokemon)
-    console.log(pokemon)
     loadData()
-    //Cambiar: Agregar alerta o toast al añadir
     //Cerrar Modal
     $('#addModal').modal('hide')
+    //Mostrar Toast
+    $('#toast').toast('show')
 })
 const loadData = () => {
     let container = document.querySelector('#cards-container')
@@ -47,16 +47,16 @@ const loadData = () => {
 const deletePokemon = async function(id){
     console.log(pokemons, pokemons[id])
     let res = await Swal.fire({
-        title:`Desea enviar al Profesor Oak el pokemon ${pokemons[id].name}?`,
+        title:`¿Desea enviar al Profesor Oak el Pokémon ${pokemons[id].name}?`,
         showCancelButton:true,
         confirmButtonText:"Si, enviar!"
       });
       if(res.isConfirmed){
         pokemons.splice(id,1);
         loadData();
-        Swal.fire("Pokemon enviado al Profesor Oak!");
+        Swal.fire("Pokémon enviado al Profesor Oak!");
       }else {
-        Swal.fire("Operacion Cancelada");
+        Swal.fire("Operación Cancelada");
       }
 }
 
