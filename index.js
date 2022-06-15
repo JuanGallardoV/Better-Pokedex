@@ -10,10 +10,10 @@ document.querySelector("#addBtn").addEventListener("click", () => {
     pokemon.desc = desc.value
     pokemon.legend = legend
     pokemon.type = type
-    if(!name.value || name.value === '') {
+    if (!name.value || name.value === '') {
         name.focus()
         alert('Ingrese un nombre')
-    }else if(!desc.value || desc.value === '') {
+    } else if (!desc.value || desc.value === '') {
         desc.focus()
         alert('Ingrese una descripción')
     } else {
@@ -22,16 +22,17 @@ document.querySelector("#addBtn").addEventListener("click", () => {
         //Cerrar Modal
         $('#addModal').modal('hide')
         //Mostrar Toast
+        toast(pokemon.name)
         $('#toast').toast('show')
     }
 })
 const loadData = () => {
     let container = document.querySelector('#cards-container')
-    if(pokemons.length == 0) {
+    if (pokemons.length == 0) {
         container.innerHTML = `
         <div class="rotomdex">
                 <img src="assets/rotomDex.webp" alt="" id="rotom">
-            <div class="speech"></div>
+            <div class="speech">¡Hola!<br/>Prueba a añadir un Pokémon con el '+'</div>
             </div>
         `
     } else {
@@ -76,16 +77,17 @@ const loadData = () => {
 const deletePokemon = async function (id) {
     console.log(pokemons, pokemons[id])
     let res = await Swal.fire({
-        title: `¿Desea enviar al Profesor Oak el Pokémon ${pokemons[id].name}?`,
+        title: `¿Desea liberar al Pokémon ${pokemons[id].name}?`,
         showCancelButton: true,
-        confirmButtonText: "Si, enviar!"
+        confirmButtonText: "Si",
+        cancelButtonText: 'No'
     });
     if (res.isConfirmed) {
         pokemons.splice(id, 1);
         loadData();
-        Swal.fire("Pokémon enviado al Profesor Oak!");
+        Swal.fire("Pokémon liberado");
     } else {
-        Swal.fire("Operación Cancelada");
+        Swal.fire("¡Cancelado!");
     }
 }
 
@@ -99,7 +101,7 @@ const resetModal = () => {
 
 document.querySelector("#cancelBtn").addEventListener("click", () => {
     resetModal()
-    
+
 })
 
 const alert = (message) => {
@@ -113,3 +115,27 @@ const alert = (message) => {
                           ${message}
                         </div>`
 }
+
+const toast = (name) => {
+    const wrapper = document.querySelector('body')
+    if (document.querySelector('#toast')) {
+        document.querySelector('#toast').remove()
+    }
+    let toast = document.createElement('div')
+        toast.innerHTML = `
+    <div class="toast fade" role="alert" aria-live="assertive" aria-atomic="true" id="toast" data-bs-delay="2000">
+        <div class="toast-header">
+            <img src="assets/rotomdex_sprite.png" class="rounded me-2" id="rotomIcon" alt="">
+            <strong class="me-auto">RotomDex</strong>
+        </div>
+        <div class="toast-body">
+           Los datos de ${name} se han registrado en la Pokédex
+        </div>
+    </div>
+    `
+        wrapper.appendChild(toast)
+}
+
+document.addEventListener("DOMContentLoaded",()=>{
+    loadData();
+});

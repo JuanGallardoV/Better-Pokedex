@@ -9,6 +9,10 @@ body {
     min-width: 360px;
     width: 100%;
 }
+:root {
+    --red: #dc6361;
+    --darker-red: #a54a48;
+}
 
 @keyframes scroll {
     100% {
@@ -48,16 +52,16 @@ nav a:hover {
     right: 30px;
     width: 60px;
     height: 60px;
-    background: #dc6361;
+    background: var(--red);
 }
 
 #toast {
-    position: absolute;
-    top: 70px;
+    position: fixed;
+    top: 25px;
     right: 60px;
 }
 
-#pokeball {
+#rotomIcon {
     width: 45px;
     height: auto;
 }
@@ -72,7 +76,7 @@ nav a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 15%;
+    margin-top: 10%;
 }
 
 #rotom {
@@ -98,18 +102,16 @@ nav a:hover {
     position: relative;
     background: #fffeaf;
     font-size: 20px;
-    line-height: 120px;
-    filter: drop-shadow(5px 5px 2px #A3A3A3);
+    filter: drop-shadow(5px 5px 2px #646464);
     text-align: center;
-    /*Cambiar: Su tamaño debido al texto*/
     width: 250px;
-    height: 120px;
     border-radius: 10px;
     border-style: solid;
     border-width: 3px;
     border-color: #f5b928;
-    padding: 0px;
+    padding: 15px 0 15px 0;
     margin: 0 10px 10px 0;
+    font-style: italic;
     z-index: 2;
     animation: float 1.5s ease-in-out infinite;
 }
@@ -129,11 +131,7 @@ nav a:hover {
 }
 
 .container-fluid {
-    /* background: rebeccapurple; */
-    /* margin-top: 35px; */
     padding: 20px;
-    /* overflow: hidden;
-    max-height: 500px; */
 }
 
 .cards {
@@ -181,7 +179,6 @@ nav a:hover {
 .card__link:hover::after,
 .card__link:hover {
     width: 100%;
-    /*Cambiar: Buscar un color más acorde, que quede bien con todos los tipos*/
     color: black;
 }
 
