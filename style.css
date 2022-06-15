@@ -8,11 +8,31 @@ body {
     height: 100vh;
     min-width: 360px;
     width: 100%;
+    overflow: overlay;
 }
 :root {
     --red: #dc6361;
     --darker-red: #a54a48;
 }
+
+::-webkit-scrollbar {
+    width: 20px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--red);
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--darker-red);
+  }
 
 @keyframes scroll {
     100% {
