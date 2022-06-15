@@ -11,77 +11,77 @@
     <!--FontAwesome-->
     <script src="https://kit.fontawesome.com/7da21b06f6.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
-    <title>Pokedex</title>
+    <title>Pokédex</title>
+    <link rel="shortcut icon" href="assets/pokeball.png" type="image/x-icon">
 </head>
 
 <body>
-    <!--Cambiar: El navbar, hacerlo float o solo poner el nombre y el añadir-->
+    <!--Cambiar: El navbar, hacerlo float o solo poner el nombre-->
     <nav>
         <a href="#">Home</a>
         <a href="#">Algo</a>
         <a href="#">Algo</a>
         <a href="#">Algo</a>
     </nav>
-   
+
     <div class="container-fluid">
         <div class="cards" id="cards-container">
-            <!-- Modeleo de card-->
-            <div class="card">
-                <div class="card__icon"><i class="fas fa-bolt"></i></div>
-
-                <h2 class="card__title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
-                <p class="card__apply">
-                    <a class="card__link" href="#">Apply Now <i class="fas fa-arrow-right"></i></a>
-                </p>
+            <div class="rotomdex">
+                <img src="assets/rotomDex.webp" alt="" id="rotom">
+                <div class="speech"></div>
             </div>
         </div>
     </div>
-     <!--Cambiar: El color del btn-->
-        <button class="btn btn-primary" id="modalBtn" data-bs-toggle="modal" data-bs-target="#addModal"><i class="fa-solid fa-plus"></i></button>
+    <button class="btn btn-danger" id="modalBtn" data-bs-toggle="modal" data-bs-target="#addModal"><i
+            class="fa-solid fa-plus"></i></button>
 
     <!--AddModal-->
-    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true"
+        data-bs-backdrop="static">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Añadir Pokemon</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Añadir Pokémon</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                        <div id="alert"></div>
-                        <div class="mb-3">
-                            <label class="form-label" for="name">Nombre</label>
-                            <input class="form-control" id="name" type="text" placeholder="Máximo 11 caracteres" required maxlength="11">
+                    <div id="alert"></div>
+                    <div class="mb-3">
+                        <label class="form-label" for="name">Nombre</label>
+                        <input class="form-control" id="name" type="text" placeholder="Máximo 11 caracteres" required
+                            maxlength="11">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="desc">Descripción</label>
+                        <input class="form-control" id="desc" type="text" placeholder="Máximo 25 caracteres" required
+                            maxlength="25">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="legend-rb">Legendario</label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="legend-rb" id="legend">
+                            <label class="form-check-label" for="legend">Si</label>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="desc">Descripción</label>
-                            <input class="form-control" id="desc" type="text" placeholder="Máximo 25 caracteres" required maxlength="25">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="legend-rb" id="noLegend" checked>
+                            <label class="form-check-label" for="noLegend">No</label>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="legend-rb">Legendario</label>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="legend-rb" id="legend">
-                                <label class="form-check-label" for="legend">Si</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="legend-rb" id="noLegend" checked>
-                                <label class="form-check-label" for="noLegend">No</label>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="type">Tipo</label>
-                            <select class="form-select" id="type">
-                                <option value="leaf" selected>Planta</option>
-                                <option value="fire-flame-curved">Fuego</option>
-                                <option value="droplet">Agua</option>
-                                <option value="bullseye">Normal</option>
-                                <option value="bolt">Eléctrico</option>
-                            </select>
-                        </div>
-                    
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="type">Tipo</label>
+                        <select class="form-select" id="type">
+                            <option value="leaf" selected>Planta</option>
+                            <option value="fire-flame-curved">Fuego</option>
+                            <option value="droplet">Agua</option>
+                            <option value="bullseye">Normal</option>
+                            <option value="bolt">Eléctrico</option>
+                        </select>
+                    </div>
+
                 </div>
                 <div class="modal-footer">
-                    <button type="button" id="cancelBtn" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" id="cancelBtn" class="btn btn-outline-secondary"
+                        data-bs-dismiss="modal">Cancelar</button>
                     <button type="submit" id="addBtn" class="btn btn-success">Añadir</button>
                 </div>
             </div>
@@ -91,13 +91,13 @@
     <!--Toast-->
     <div class="toast fade" role="alert" aria-live="assertive" aria-atomic="true" id="toast" data-bs-delay="2000">
         <div class="toast-header">
-          <img src="assets/pokeball.png" class="rounded me-2" id="pokeball" alt="...">
-          <strong class="me-auto">Pokédex</strong>
+            <img src="assets/pokeball.png" class="rounded me-2" id="pokeball" alt="">
+            <strong class="me-auto">Pokédex</strong>
         </div>
         <div class="toast-body">
-          ¡Pokémon agregado!
+            ¡Pokémon agregado!
         </div>
-      </div>
+    </div>
 
 </body>
 <!-- Bootstrap 5.2 JS -->

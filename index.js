@@ -27,40 +27,49 @@ document.querySelector("#addBtn").addEventListener("click", () => {
 })
 const loadData = () => {
     let container = document.querySelector('#cards-container')
-    container.innerHTML = ''
-    for (let i = 0; i < pokemons.length; ++i) {
-        let p = pokemons[i]
-        //Card
-        let card = document.createElement('div')
-        card.classList.add('card')
-        card.setAttribute('id', `${p.type}`)
-        if (p.legend) {
-            card.innerHTML = `
-                <div class="card__icon">
-                    <i class="fas fa-${p.type}"></i>
-                    ${p.name}
-                </div>
-                <p class="card__ball"><img src="assets/masterball.png" class="rounded me-2" id="masterball" alt="..."></p>
-                <h2 class="card__title">${p.desc}</h2>
-                <p class="card__apply">
-                    <a class="card__link" onClick="deletePokemon(${i})">Eliminar <i class="fas fa-arrow-right"></i></a>
-                </p>
+    if(pokemons.length == 0) {
+        container.innerHTML = `
+        <div class="rotomdex">
+                <img src="assets/rotomDex.webp" alt="" id="rotom">
+            <div class="speech"></div>
+            </div>
         `
-        } else {
-            card.innerHTML = `
-                <div class="card__icon">
-                    <i class="fas fa-${p.type}"></i>
-                    ${p.name}
-                </div>
-                <h2 class="card__title">${p.desc}</h2>
-                <p class="card__apply">
-                    <a class="card__link" onClick="deletePokemon(${i})">Eliminar <i class="fas fa-arrow-right"></i></a>
-                </p>
-        `
+    } else {
+        container.innerHTML = ''
+        for (let i = 0; i < pokemons.length; ++i) {
+            let p = pokemons[i]
+            //Card
+            let card = document.createElement('div')
+            card.classList.add('card')
+            card.setAttribute('id', `${p.type}`)
+            if (p.legend) {
+                card.innerHTML = `
+                    <div class="card__icon">
+                        <i class="fas fa-${p.type}"></i>
+                        ${p.name}
+                    </div>
+                    <p class="card__ball"><img src="assets/masterball.png" class="rounded me-2" id="masterball" alt="..."></p>
+                    <h2 class="card__title">${p.desc}</h2>
+                    <p class="card__apply">
+                        <a class="card__link" onClick="deletePokemon(${i})">Eliminar <i class="fas fa-arrow-right"></i></a>
+                    </p>
+            `
+            } else {
+                card.innerHTML = `
+                    <div class="card__icon">
+                        <i class="fas fa-${p.type}"></i>
+                        ${p.name}
+                    </div>
+                    <h2 class="card__title">${p.desc}</h2>
+                    <p class="card__apply">
+                        <a class="card__link" onClick="deletePokemon(${i})">Eliminar <i class="fas fa-arrow-right"></i></a>
+                    </p>
+            `
+            }
+            container.appendChild(card)
+            //Limpiar el modal
+            resetModal()
         }
-        container.appendChild(card)
-        //Limpiar el modal
-        resetModal()
     }
 }
 

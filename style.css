@@ -2,6 +2,18 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
         Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     margin: 0;
+    background-size: cover;
+    animation: scroll 40s linear infinite;
+    background-image: url('assets/bg.png');
+    height: 100vh;
+    min-width: 360px;
+    width: 100%;
+}
+
+@keyframes scroll {
+    100% {
+        background-position: 0px -3000px;
+    }
 }
 
 img {
@@ -10,13 +22,12 @@ img {
 }
 
 nav {
-    background-color: #3a24f0;
     padding: 10px;
     text-align: center;
     width: 100%;
-    position: sticky;
+    /* position: sticky; */
     top: 0px;
-    z-index: 2;
+    z-index: 3;
 }
 
 nav a {
@@ -37,6 +48,7 @@ nav a:hover {
     right: 30px;
     width: 60px;
     height: 60px;
+    background: #dc6361;
 }
 
 #toast {
@@ -56,13 +68,68 @@ nav a:hover {
     margin-right: -20px !important;
 }
 
-/* input:focus:invalid {
-    background: rgba(241, 39, 17, 0.6);
-    border-color: red;
-} */
+.rotomdex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15%;
+}
+
+#rotom {
+    width: 35%;
+    animation: float 1.5s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translatey(0px);
+    }
+
+    50% {
+        transform: translatey(-20px);
+    }
+
+    100% {
+        transform: translatey(0px);
+    }
+}
+
+.speech {
+    position: relative;
+    background: #fffeaf;
+    font-size: 20px;
+    line-height: 120px;
+    filter: drop-shadow(5px 5px 2px #A3A3A3);
+    text-align: center;
+    /*Cambiar: Su tamaño debido al texto*/
+    width: 250px;
+    height: 120px;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #f5b928;
+    padding: 0px;
+    margin: 0 10px 10px 0;
+    z-index: 2;
+    animation: float 1.5s ease-in-out infinite;
+}
+
+.speech:after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 0;
+    z-index: 1;
+    border-style: solid;
+    border-width: 0 0 20px 20px;
+    border-color: transparent transparent #f5b928 transparent;
+    top: 27%;
+    left: -23px;
+    margin-top: -10px;
+}
 
 .container-fluid {
-    background: rebeccapurple;
+    /* background: rebeccapurple; */
     /* margin-top: 35px; */
     padding: 20px;
     /* overflow: hidden;
@@ -114,13 +181,14 @@ nav a:hover {
 .card__link:hover::after,
 .card__link:hover {
     width: 100%;
+    /*Cambiar: Buscar un color más acorde, que quede bien con todos los tipos*/
     color: black;
 }
 
 .card__ball {
     grid-row: 1/2;
     justify-self: end;
-  }
+}
 
 .card__icon {
     grid-row: 2/3;
