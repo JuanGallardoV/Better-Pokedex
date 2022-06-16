@@ -32,7 +32,8 @@ const loadData = () => {
         container.innerHTML = `
         <div class="rotomdex">
                 <img src="assets/rotomDex.webp" alt="" id="rotom">
-            <div class="speech">¡Hola!<br/>Prueba a añadir un Pokémon con '+'</div>
+            <div class="speech">¡Hola!<br/>Prueba a añadir un Pokémon con <i
+            class="fa-solid fa-plus" id="icon"></i></div>
             </div>
         `
     } else {

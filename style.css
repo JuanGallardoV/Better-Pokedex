@@ -12,7 +12,6 @@ body {
     background-size: 100px 100px;
     background-color: var(--bg);
     height: 100vh;
-    min-width: 360px;
     width: 100%;
     overflow: overlay;
 }
@@ -75,7 +74,7 @@ nav a:hover {
 }
 
 #modalBtn {
-    border-radius: 50%;
+    border-radius: 100vmax;
     position: fixed;
     bottom: 30px;
     right: 30px;
@@ -111,6 +110,16 @@ nav a:hover {
 #rotom {
     width: 35%;
     animation: float 1.5s ease-in-out infinite;
+}
+
+#icon {
+    background-color: var(--red);
+    font-size: small;
+    width: 25px;
+    height: 25px;
+    padding-top: 0.375rem;
+    color: white;
+    border-radius: 100vmax;
 }
 
 @keyframes float {
